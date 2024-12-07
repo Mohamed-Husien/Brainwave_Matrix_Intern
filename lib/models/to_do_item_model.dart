@@ -1,6 +1,6 @@
 class ToDoItemModel {
   final String content, currentDate;
-  final bool checkBoxValue;
+  bool checkBoxValue;
 
   ToDoItemModel(
       {required this.content,
