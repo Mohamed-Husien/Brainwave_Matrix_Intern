@@ -1,10 +1,12 @@
+import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:brainwave_matrix_intern_to_do_app/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox('to_do');
+  await Hive.openBox<ToDoItemModel>('to_do');
+  Hive.registerAdapter(ToDoItemModelAdapter());
   runApp(const ToDoApp());
 }
 
