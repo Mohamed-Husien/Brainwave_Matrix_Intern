@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, this.textColor, required this.text, this.onPressed});
-  final Color? textColor;
+      {super.key,
+      this.backgroundColor,
+      this.textColor,
+      required this.text,
+      this.onPressed});
+  final Color? backgroundColor, textColor;
   final String text;
   final void Function()? onPressed;
   @override
@@ -21,6 +25,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           text,
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );
