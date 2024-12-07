@@ -1,15 +1,16 @@
+import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ToDoItem extends StatelessWidget {
-  ToDoItem({super.key});
-  String currentDate = DateFormat.yMMMMd().format(DateTime.now());
+  const ToDoItem({super.key, required this.toDoItemModel});
+
+  final ToDoItemModel toDoItemModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.yellow,
           borderRadius: BorderRadius.circular(24),
@@ -21,17 +22,17 @@ class ToDoItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Checkbox(
-                  value: true,
+                  value: toDoItemModel.checkBoxValue,
                   onChanged: (p) {},
                 ),
                 const SizedBox(
                   width: 24,
                 ),
-                const Text("Task"),
+                Text(toDoItemModel.content),
               ],
             ),
             Text(
-              currentDate,
+              toDoItemModel.currentDate,
               style: const TextStyle(color: Colors.grey),
             ),
           ],
