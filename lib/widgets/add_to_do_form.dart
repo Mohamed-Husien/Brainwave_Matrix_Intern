@@ -57,7 +57,7 @@ class _AddToDoFormWidgetState extends State<AddToDoFormWidget> {
                           try {
                             var toDoItemModel = ToDoItemModel(
                               content: content!,
-                              currentDate: DateFormat('MMM, d, yyyy')
+                              currentDate: DateFormat('hh:mm a, d, yyyy')
                                   .format(DateTime.now())
                                   .toString(),
                               checkBoxValue: false,
