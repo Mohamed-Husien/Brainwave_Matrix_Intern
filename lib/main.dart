@@ -1,7 +1,10 @@
 import 'package:brainwave_matrix_intern_to_do_app/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('to_do');
   runApp(const ToDoApp());
 }
 
