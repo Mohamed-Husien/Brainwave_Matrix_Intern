@@ -1,8 +1,12 @@
 import 'dart:developer';
 
+import 'package:brainwave_matrix_intern_to_do_app/cubits/add_to_do_cubit/add_to_do_cubit.dart';
+import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:brainwave_matrix_intern_to_do_app/widgets/custom_button.dart';
 import 'package:brainwave_matrix_intern_to_do_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class AddToDoFormWidget extends StatefulWidget {
   const AddToDoFormWidget({
@@ -42,15 +46,34 @@ class _AddToDoFormWidgetState extends State<AddToDoFormWidget> {
                     Navigator.pop(context);
                   },
                 ),
-                CustomButton(
-                  text: "Add",
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
+                BlocBuilder<AddToDoCubit, AddToDoState>(
+                  builder: (context, state) {
+                    return CustomButton(
+                      text: "Add",
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          try {
+                            var toDoItemModel = ToDoItemModel(
+                              content: content!,
+                              currentDate: DateFormat('MMM, d, yyyy')
+                                  .format(DateTime.now())
+                                  .toString(),
+                              checkBoxValue: false,
+                            );
+                            BlocProvider.of<AddToDoCubit>(context)
+                                .addToDo(toDoItemModel);
+                            log("Add note done successfully");
+                            Navigator.pop(context);
+                          } catch (e) {
+                            log(e.toString());
+                          }
+                        } else {
+                          autovalidateMode = AutovalidateMode.always;
+                          setState(() {});
+                        }
+                      },
+                    );
                   },
                 )
               ],
