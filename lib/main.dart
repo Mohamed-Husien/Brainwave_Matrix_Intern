@@ -1,4 +1,5 @@
 import 'package:brainwave_matrix_intern_to_do_app/cubits/add_to_do_cubit/add_to_do_cubit.dart';
+import 'package:brainwave_matrix_intern_to_do_app/cubits/to_do_cubit/to_do_cubit.dart';
 import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:brainwave_matrix_intern_to_do_app/views/home_view.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,11 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddToDoCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AddToDoCubit()),
+        BlocProvider(create: (context) => ToDoCubit()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

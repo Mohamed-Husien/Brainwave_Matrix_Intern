@@ -28,9 +28,6 @@ class HomeView extends StatelessWidget {
           title: const Text("To Do App"),
           centerTitle: true,
         ),
-        body: BlocProvider(
-          create: (context) => ToDoCubit(),
-          child: const ToDo(),
-        ));
+        body: const ToDo());
   }
 }

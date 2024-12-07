@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:brainwave_matrix_intern_to_do_app/cubits/add_to_do_cubit/add_to_do_cubit.dart';
+import 'package:brainwave_matrix_intern_to_do_app/cubits/to_do_cubit/to_do_cubit.dart';
 import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:brainwave_matrix_intern_to_do_app/widgets/custom_button.dart';
 import 'package:brainwave_matrix_intern_to_do_app/widgets/custom_text_field.dart';
@@ -63,7 +64,7 @@ class _AddToDoFormWidgetState extends State<AddToDoFormWidget> {
                             );
                             BlocProvider.of<AddToDoCubit>(context)
                                 .addToDo(toDoItemModel);
-                            log("Add note done successfully");
+                            BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
                             Navigator.pop(context);
                           } catch (e) {
                             log(e.toString());
