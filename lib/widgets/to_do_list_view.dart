@@ -26,18 +26,22 @@ class _ToDoListViewState extends State<ToDoListView> {
             (BlocProvider.of<ToDoCubit>(context).toDos ?? []).reversed.toList();
 
         return ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return ToDoItem(
-                  toDoItemModel: items[index],
-                  onChanged: (value) {
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ToDoItem(
+              toDoItemModel: items[index],
+              onChanged: (value) {
+                setState(
+                  () {
                     items[index].checkBoxValue = value!;
                     items[index].save();
-                    BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
-
-                    setState(() {});
-                  });
-            });
+                  },
+                );
+                BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
+              },
+            );
+          },
+        );
       },
     );
   }
