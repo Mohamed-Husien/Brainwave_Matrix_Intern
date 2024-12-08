@@ -12,38 +12,35 @@ class ToDoItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Container(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 24),
         decoration: BoxDecoration(
           color: Colors.yellow,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Colors.black,
-                  side: const BorderSide(
-                    width: 1.5,
-                    color: Colors.black,
-                  ),
-                  value: toDoItemModel.checkBoxValue,
-                  onChanged: onChanged,
+            ListTile(
+              leading: Checkbox(
+                checkColor: Colors.white,
+                activeColor: Colors.black,
+                side: const BorderSide(
+                  width: 1.5,
+                  color: Colors.black,
                 ),
-                const SizedBox(
-                  width: 24,
+                value: toDoItemModel.checkBoxValue,
+                onChanged: onChanged,
+              ),
+              title: Text(
+                toDoItemModel.content,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
-                Text(
-                  toDoItemModel.content,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
+              ),
+            ),
+            const SizedBox(
+              height: 8,
             ),
             Text(
               toDoItemModel.currentDate,
