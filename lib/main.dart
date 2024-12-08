@@ -27,9 +27,8 @@ class ToDoApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.yellow,
+          brightness: Brightness.dark,
           appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.yellow, // Set the AppBar color here
             elevation: 0, // Optional: Match your AppBar's elevation
           ),
         ),

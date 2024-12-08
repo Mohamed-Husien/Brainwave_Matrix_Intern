@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:brainwave_matrix_intern_to_do_app/cubits/to_do_cubit/to_do_cubit.dart';
 import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:brainwave_matrix_intern_to_do_app/widgets/to_do_item.dart';
@@ -33,6 +31,10 @@ class _ToDoListViewState extends State<ToDoListView> {
               return ToDoItem(
                   toDoItemModel: items[index],
                   onChanged: (value) {
+                    items[index].checkBoxValue = value!;
+                    items[index].save();
+                    BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
+
                     setState(() {});
                   });
             });

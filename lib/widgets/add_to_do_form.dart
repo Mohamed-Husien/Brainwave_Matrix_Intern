@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:brainwave_matrix_intern_to_do_app/cubits/add_to_do_cubit/add_to_do_cubit.dart';
 import 'package:brainwave_matrix_intern_to_do_app/cubits/to_do_cubit/to_do_cubit.dart';
 import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
@@ -62,12 +60,13 @@ class _AddToDoFormWidgetState extends State<AddToDoFormWidget> {
                                   .toString(),
                               checkBoxValue: false,
                             );
-                            BlocProvider.of<AddToDoCubit>(context)
-                                .addToDo(toDoItemModel);
-                            BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
+                            BlocProvider.of<AddToDoCubit>(context).addToDo(
+                                toDoItemModel); //here i add toDoModel to hive
+                            BlocProvider.of<ToDoCubit>(context)
+                                .fetchAllToDo(); //to refresh the list of to do after close dialog
                             Navigator.pop(context);
                           } catch (e) {
-                            log(e.toString());
+                            throw (e.toString());
                           }
                         } else {
                           autovalidateMode = AutovalidateMode.always;

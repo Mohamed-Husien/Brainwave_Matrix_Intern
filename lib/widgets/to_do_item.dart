@@ -24,18 +24,33 @@ class ToDoItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Checkbox(
+                  checkColor: Colors.white,
+                  activeColor: Colors.black,
+                  side: const BorderSide(
+                    width: 1.5,
+                    color: Colors.black,
+                  ),
                   value: toDoItemModel.checkBoxValue,
                   onChanged: onChanged,
                 ),
                 const SizedBox(
                   width: 24,
                 ),
-                Text(toDoItemModel.content),
+                Text(
+                  toDoItemModel.content,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
               ],
             ),
             Text(
               toDoItemModel.currentDate,
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+              ),
             ),
           ],
         ),
