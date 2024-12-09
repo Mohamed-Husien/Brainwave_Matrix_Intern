@@ -43,6 +43,7 @@ class _ToDoListViewState extends State<ToDoListView> {
                     items[index].save();
                   },
                 );
+                // ignore: use_build_context_synchronously
                 BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
               },
             );
