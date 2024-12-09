@@ -14,6 +14,9 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: const TextStyle(
+        color: Colors.black,
+      ),
       onChanged: onChanged,
       onSaved: onSaved,
       validator: (value) {
@@ -24,20 +27,21 @@ class CustomTextFormField extends StatelessWidget {
         }
       },
       maxLines: maxLines,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         border: buildBorder(),
         enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(),
+        focusedBorder: buildBorder(Colors.black),
         hintText: hint,
       ),
     );
   }
 
-  OutlineInputBorder buildBorder() {
+  OutlineInputBorder buildBorder([Color]) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(
-        color: Colors.white,
+      borderSide: BorderSide(
+        color: Color ?? Colors.black12,
       ),
     );
   }

@@ -10,13 +10,16 @@ class CustomDialogWidget extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return AlertDialog(
-      backgroundColor: Colors.yellow[300],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      backgroundColor: Colors.yellow[50],
       content: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         height: screenHeight * 0.3,
         width: screenWidth * 0.8,
         decoration: BoxDecoration(
-          color: Colors.yellow[300],
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: const AddToDoFormWidget(),
       ),

@@ -30,6 +30,12 @@ class _ToDoListViewState extends State<ToDoListView> {
           itemBuilder: (context, index) {
             return ToDoItem(
               toDoItemModel: items[index],
+              onDoubleTap: () {
+                setState(() {
+                  items[index].delete();
+                });
+                BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
+              },
               onChanged: (value) {
                 setState(
                   () {
