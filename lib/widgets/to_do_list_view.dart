@@ -30,7 +30,7 @@ class _ToDoListViewState extends State<ToDoListView> {
           itemBuilder: (context, index) {
             return ToDoItem(
               toDoItemModel: items[index],
-              onDoubleTap: () {
+              onSlide: (context) {
                 setState(() {
                   items[index].delete();
                 });

@@ -1,24 +1,25 @@
 import 'package:brainwave_matrix_intern_to_do_app/models/to_do_item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoItem extends StatelessWidget {
   const ToDoItem({
     super.key,
     required this.toDoItemModel,
     required this.onChanged,
-    this.onDoubleTap,
+    this.onSlide,
   });
 
   final ToDoItemModel toDoItemModel;
   final void Function(bool?)? onChanged;
-  final Function()? onDoubleTap;
+  final void Function(BuildContext)? onSlide;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: GestureDetector(
-        onDoubleTap: onDoubleTap,
+      child: Slidable(
+        endActionPane: actionPane(),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
           decoration: BoxDecoration(
@@ -68,6 +69,21 @@ class ToDoItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  ActionPane actionPane() {
+    return ActionPane(
+      motion: const StretchMotion(),
+      children: [
+        SlidableAction(
+          onPressed: onSlide,
+          icon: Icons.delete,
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.red.shade300,
+          borderRadius: BorderRadius.circular(12),
+        )
+      ],
     );
   }
 }
